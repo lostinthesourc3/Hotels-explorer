@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  hotelName: MyString
+  address: MyString
+  check_in: 2019-09-09 14:17:46
+  check_out: 2019-09-09 14:17:46
+  comment: MyString
+  user: one
+
+two:
+  name: MyString
+  hotelName: MyString
+  address: MyString
+  check_in: 2019-09-09 14:17:46
+  check_out: 2019-09-09 14:17:46
+  comment: MyString
+  user: two

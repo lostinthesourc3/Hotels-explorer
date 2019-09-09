@@ -1,0 +1,14 @@
+{
+    "bookings": [
+      {
+        "id": "1",
+        "name": "NYC",
+        "hotelName": "Mariott",
+        "image": "URL",
+        "address": "123 1st St",
+        "check_in": "11/11/11",
+        "check_out": "12/11/11",
+        "comment": "Comment"
+      }
+    ]
+}
