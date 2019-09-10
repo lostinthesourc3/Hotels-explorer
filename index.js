@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
 
     const userForm = document.querySelector("#user")
-    const userName = userForm.value
+    // const userName = userForm.value
 
     userForm.addEventListener("submit", function (e){
         e.preventDefault()
@@ -29,18 +29,4 @@ document.addEventListener("DOMContentLoaded", function(){
         // })
     })
 })
-
-
-// fetch(likeURL, {
-//     method: "POST",
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({
-//       "image_id": `${imageId}`
-//     })
-//   })
-//     // .then(parseJSON)
-// });
 

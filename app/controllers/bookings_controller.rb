@@ -22,6 +22,11 @@ class BookingsController < ApplicationController
         render json: {message: "Successfully deleted"}
     end
 
+    # HOTELS
+    def search
+        res = RestClient.get("https://api.yelp.com/v3/businesses/search?term=hotel&location=NYC", headers={"Authorization": ENV["API_KEY"]})
+        render json: JSON.parse(res)
+    end
 
     private
 
