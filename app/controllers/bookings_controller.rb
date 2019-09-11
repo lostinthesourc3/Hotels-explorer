@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
         if booking.save
             render json: booking
         else
-            render json: {message: "meh", errors: game.errors.full_messages}, status: 406
+            render json: {message: "meh", errors: booking.errors.full_messages}, status: 406
         end
     end
 
@@ -27,10 +27,10 @@ class BookingsController < ApplicationController
         render json: JSON.parse(res)
     end
 
-    
+
     private
 
     def booking_params
-        params.require(:booking).permit(:name, :hotelName, :address, :check_in, :check_out, :comment, :image)
+        params.require(:booking).permit(:user_id, :name, :hotelName, :address, :check_in, :check_out, :comment, :image)
     end
 end
