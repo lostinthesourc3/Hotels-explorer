@@ -27,6 +27,7 @@ class BookingsController < ApplicationController
         render json: JSON.parse(res)
     end
 
+    
     private
 
     def booking_params

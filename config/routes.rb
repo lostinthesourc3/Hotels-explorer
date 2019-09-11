@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :users
   resources :bookings
 
-  get "/hotel", to: "bookings#search"
+  get "/hotels", to: "bookings#search"
 end
