@@ -3,14 +3,10 @@ document.addEventListener("DOMContentLoaded", function(){
     const hotelsURL = "http://localhost:3000/hotels"
     const booksURL = "http://localhost:3000/bookings"
 
-    /*
-        SAVE A USER AND SEARCH LOCATION
-    */
 
     const userForm = document.querySelector("#user")
-    // const userName = userForm.value
     const userCont = document.querySelector("#user-container")
-        // console.log(userCont, "THE QUOTE")
+
     let userId;
 
     userForm.addEventListener("submit", function (e){
@@ -43,21 +39,19 @@ document.addEventListener("DOMContentLoaded", function(){
             console.log(userInfo)
             userId = userInfo.id
             userCont.innerHTML = `
-                <h1>${userInfo.name}</h1>
+                <h1>Welcome, ${userInfo.name}</h1>
                 <div id="books">
                     <h2> You don't have any hotels booked.</h2>
-                    You're going to ${userInfo.search}
+                    You're going to ${userInfo.search} <br>
+                    <button id="my-books">My Hotels</button>
                 </div>
             `
         })
+        
+
     })
 
     
-    /*
-        GET ALL HOTELS
-    */
-
-    // const booksDiv = document.getElementById("books")
     const bookButton = document.createElement("BUTTON")
     bookButton.innerHTML = "Book a hotel"
 
@@ -127,60 +121,47 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
-                    bookBtn.addEventListener("click", function(e){
-                        console.log("ALL CLICK") //MAYBE???
+                bookBtn.addEventListener("click", function(e){
+                    // console.log("ALL CLICK") 
+                    
 
-                        // get button by hotel id
+                    const address = address1 + " " + address2
 
+                    const hotelData = {
+                        hotelName: name,
+                        address: address,
+                        image: img,
+                        user_id: userId
+                    }
 
-                        const hotelContainer = document.querySelector("#hotel")
-
-                        // const name = hotelContainer.querySelector("h4").innerText
-                        // const address1 = hotelContainer.querySelector("#a1").innerText
-                        // const address2 = hotelContainer.querySelector("#a2").innerText
-                        const address = address1 + " " + address2
-                        // const img = hotelContainer.querySelector("img").src
-
-                        const hotelData = {
-                            hotelName: name,
-                            address: address,
-                            image: img,
-                            user_id: userId
-                        }
-
-                        console.log(hotelData)
+                    console.log(hotelData)
 
 
-                        // post to bookings
+                    // post to bookings
 
-                        
-                        fetch(booksURL, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "Accepts": "application/json"
-                            },
-                            body: JSON.stringify(hotelData)
-                        })
-                        .then(res => res.json())
-                        .then(hotelData => {
-                            console.log(hotelData)
-                        })
-
-
-
+                    
+                    fetch(booksURL, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accepts": "application/json"
+                        },
+                        body: JSON.stringify(hotelData)
                     })
-
-
-
-
-                // })
-
+                })
             }
         })
     })
 
+    const myBooksBtn = document.querySelector("#my-books")
+
+    myBooksBtn.addEventListener("click", function(e){
+        console.log("HI")
+    })
+
+    // fetch(booksURL)
+    // .then(json => json)
+    // .then(console.log)
 
     
-
 })
