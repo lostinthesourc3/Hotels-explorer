@@ -4,6 +4,11 @@ class BookingsController < ApplicationController
         render json: bookings
     end
 
+    def show
+        booking = Booking.find(params[:id])
+        render json: booking
+    end 
+
     def create
         booking = Booking.new(booking_params)
         
@@ -15,8 +20,9 @@ class BookingsController < ApplicationController
     end
 
     def destroy
+        # byebug
         booking = Booking.find(params[:id])
-        booking_params.destroy
+        booking.destroy
 
         render json: {message: "Successfully deleted"}
     end

@@ -6,9 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // const mainContainer = document.querySelector("#main")
     const titleContainer = document.querySelector("#title")
     const contentContainer = document.querySelector("#content")
-    const messageContainer = document.querySelector("#message")
-
-    // let seeHotelsButton
+    // const messageContainer = document.querySelector("#message")
 
     function renderUserForm(){
         titleContainer.insertAdjacentHTML("beforeend", `
@@ -58,9 +56,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
             contentContainer.innerHTML = `
                     <div id="books">
-                        <h5> You don't have any hotels booked.</h5>
+                        <h5> You don't have any saved hotels.</h5>
                         <button id="see-hotels">See Hotels</button>
-                        <button id="my-hotels">My Hotels</button>
                     </div>
                 `
                 
@@ -81,9 +78,75 @@ document.addEventListener("DOMContentLoaded", function(){
                     `
                     contentContainer.innerHTML = `
                         <div id="books">
-                            
+                            <button id="my-hotels">My Hotels</button>
                         </div>
                     `
+
+                    const myBooksBtn = document.querySelector("#my-hotels")
+                        myBooksBtn.addEventListener("click", function(e){
+                            // console.log("HI")
+                            titleContainer.innerHTML = `
+                                <h4>My Saved Hotels</h4>
+                            `
+
+                            contentContainer.innerHTML = `
+                                <div class="hotels">
+                                    
+                                </div>
+                            `
+
+                            fetch(booksURL)
+                            .then(res => res.json())
+                            .then(data => {
+                                hotel = data 
+
+                                for(let i = 0; i < hotel.length; i++){
+                                    // console.log(hotel)
+                                    const name = hotel[i].hotelName
+                                    const address = hotel[i].address
+                                    const img = hotel[i].image
+                                    const id = hotel[i].id
+
+
+                                    const str = `
+                                        <div class="hotels" data-id="${id}">
+                                            <div class="hotel" id="hotel">
+                                                <h4>${name}</h4>
+                                                <img class="i" src="${img}"/>
+                                                <div id="a1">${address}</div>
+
+                                                <button id="button-${id}">delete</button>
+                                            </div>
+                                        </div>
+                                    `
+                                    contentContainer.insertAdjacentHTML("beforeend", str)
+
+
+                                    const deleteBtn = document.querySelector(`#button-${id}`)
+                                    
+                                    deleteBtn.addEventListener("click", function(e){
+                                        e.preventDefault()
+
+                                        fetch(`http://localhost:3000/bookings/${id}`, {
+                                            method: "DELETE",
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                                "Accepts": "application/json"
+                                            },
+                                            body: JSON.stringify(formData)
+                                        })
+                                        .then(function(){
+                                            const toDelete = document.querySelector(`[data-id="${id}"]`)
+                                            toDelete.remove()
+                                        })
+
+                
+                                        
+                                    })
+                                }
+                            })
+                        })
+                    
 
                     for(let i = 0; i < hotelsArray.length; i++){
                         const name = hotelsArray[i].name
@@ -111,20 +174,14 @@ document.addEventListener("DOMContentLoaded", function(){
                                 </div>
                             </div>
                         `
+                        
                         contentContainer.insertAdjacentHTML("beforeend", str)
 
 
-                        
                         const bookBtn = document.querySelector(`#button-${id}`)
 
                         bookBtn.addEventListener("click", function(e){
                             // console.log("ALL CLICK") 
-
-                            messageContainer.innerHTML = `
-                                <div id="books">
-                                    <p>${name} was added</p>
-                                </div>
-                            `
                             
                             const address = address1 + " " + address2
         
@@ -145,30 +202,16 @@ document.addEventListener("DOMContentLoaded", function(){
                                 },
                                 body: JSON.stringify(hotelData)
                             })
+                            .then(res => res.json())
+                            .then(res => {
+                                console.log('Deleted:', res.message)
+                                // return res
+                            })
                         })
                     }
                 })
             })
-
-            const myBooksBtn = document.querySelector("#my-hotels")
-            
-            myBooksBtn.addEventListener("click", function(e){
-                // console.log("HI")
-
-                fetch(booksURL)
-                .then(json => json)
-                .then(data => {
-                    myHotel = data
-                    console.log(myHotel)
-
-                    titleContainer.innerHTML = `
-                        <h4>My Saved Hotels</h4>
-                    `
-
-                })
-            })
         })
     }
-    renderUserForm()
-    
+    renderUserForm()  
 })
