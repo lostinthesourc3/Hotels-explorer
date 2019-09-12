@@ -1,8 +1,99 @@
-body {
-    background-color: lightblue;
+body{
+    background-color: #283747;
+    text-align: center;
+    font-family: 'Questrial', sans-serif;
+    color: white;
+    
 }
+
+h2{
+    font-family: 'Lato', sans-serif;
+    font-size: 50px;
+    color: white;
+    letter-spacing: 10px;
+}
+
+p{
+    font-size: 25px;
+    color: #AEB6BF;
+}
+
+input{
+    color: #AEB6BF;
+    background-color: #283747;
+    height: 30px;
+    width: 200px;
+    font-size: 15px;
+}
+
+
+.submit{
+    background-color: #283747;
+    color: #AEB6BF;
+    height: 40px;
+    width: 110px;
+    font-size: 15px;
+}
+
+
+.submit:hover{
+    color: #283747;
+    background-color: #AEB6BF;
+}
+
+
+/* BASE BUTTON */
+button{
+    background-color: #283747;
+    color: #AEB6BF;
+    height: 40px;
+    width: 110px;
+    font-size: 15px;
+}
+
+
+button:hover{
+    color: #283747;
+    background-color: #AEB6BF;
+}
+
+/* ADD TO FAV */
+
+
+.fav{
+    background-color: #283747;
+    color: #F4D03F;
+    height: 40px;
+    width: 200px;
+    font-size: 15px;
+}
+
+
+.fav:hover{
+    color: #283747;
+    background-color: #AEB6BF;
+}
+
+/* DELETE */
+
+.del{
+    background-color: #283747;
+    color: #EC7063;
+    height: 40px;
+    width: 110px;
+    font-size: 15px;
+}
+
+
+.del:hover{
+    color: #283747;
+    background-color: #AEB6BF;
+}
+
 
 img{
     height: 25%;
     width: 25%;
 }
+
+/* HOTELS */

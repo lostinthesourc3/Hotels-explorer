@@ -10,12 +10,15 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function renderUserForm(){
         titleContainer.insertAdjacentHTML("beforeend", `
-            <h4>Welcome to Hotels Explorer</h4>
+            <p>Welcome to Hotels Explorer</p>
         `)
         contentContainer.insertAdjacentHTML("beforeend", `
             <form id="user">
-                <label for="name">Enter your name to create profile: </label><br>
-                <input type="text" name="name"><br>
+                <label type="name-text" for="name">Enter your name to create a profile: </label><br>
+                <br>
+                <input type="text" name="name">
+                <br>
+                <br>
                 <input type="submit" id="submit" data-action="submit" class="submit button">
             </form>
         `)
@@ -114,8 +117,8 @@ document.addEventListener("DOMContentLoaded", function(){
                                                 <h4>${name}</h4>
                                                 <img class="i" src="${img}"/>
                                                 <div id="a1">${address}</div>
-
-                                                <button id="button-${id}">delete</button>
+                                                <br>
+                                                <button class="del" id="button-${id}">Remove</button>
                                             </div>
                                         </div>
                                     `
@@ -169,8 +172,8 @@ document.addEventListener("DOMContentLoaded", function(){
                                     <div id="a2">${address2}</div>
                                     <div>Rating: ${rating}</div> 
                                     <div>Price: ${price}</div>
-
-                                    <button id="button-${id}">Add to my favorites</button>
+                                    <br>
+                                    <button class="fav" id="button-${id}">Add to my favorites</button>
                                 </div>
                             </div>
                         `
